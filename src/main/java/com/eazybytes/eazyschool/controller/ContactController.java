@@ -58,6 +58,8 @@ public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Err
         return "contact.html";
     }
     contactService.saveMessageDetails(contact);
+    contactService.setCounter(contactService.getCounter()+1);
+    log.info("Number of times the Contact form is submitted : "+contactService.getCounter());
     return "redirect:/contact";
 }
 
