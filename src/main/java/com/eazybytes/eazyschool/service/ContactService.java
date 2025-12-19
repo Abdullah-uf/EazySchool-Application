@@ -2,32 +2,31 @@ package com.eazybytes.eazyschool.service;
 
 import com.eazybytes.eazyschool.controller.ContactController;
 import com.eazybytes.eazyschool.model.Contact;
+import com.eazybytes.eazyschool.repository.ContactRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 @Slf4j
 @Service
 public class ContactService {
+    @Autowired
+    public ContactRepository contactRepository;
 
     public ContactService(){
         System.out.println("Contact Service Bean initialized");
     }
-
-
-
-
-
     /**
      * Save Contact Details into DB
      * @param contact
      * @return boolean
      */
     public boolean saveMessageDetails(Contact contact){
-        boolean isSaved = true;
-        log.info(contact.toString());
+        boolean isSaved = false;
+
         return isSaved;
     }
 
