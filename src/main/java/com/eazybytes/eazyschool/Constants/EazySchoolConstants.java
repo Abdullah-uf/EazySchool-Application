@@ -1,8 +1,9 @@
-package com.eazybytes.eazyschool.Constants;
 
-public class EazySchoolConstants {
+package com.eazybytes.eazyschool.constants;
 
-    public static final String ANONYMOUS = "anonymous";
-    public static final String OPEN = "open";
-    public static final String CLOSE = "close";
+public interface EazySchoolConstants {
+
+    public static final String ANONYMOUS = "Anonymous";
+    public static final String OPEN = "Open";
+    public static final String CLOSE = "Close";
 }
