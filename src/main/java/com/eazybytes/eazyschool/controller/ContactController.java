@@ -27,7 +27,6 @@ public class ContactController {
     private final ContactService contactService;
 
 
-
     @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
@@ -39,15 +38,15 @@ public class ContactController {
         return "contact.html";
     }
 
-@RequestMapping(value = "/saveMsg",method = POST)
-public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
-    if(errors.hasErrors()){
-        log.error("Contact form validation failed due to : " + errors.toString());
-        return "contact.html";
-    }
-    contactService.saveMessageDetails(contact);
-    return "redirect:/contact";
-}
+    @RequestMapping(value = "/saveMsg", method = POST)
+    public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
+        if (errors.hasErrors()) {
+            log.error("Contact form validation failed due to : " + errors.toString());
+            return "contact.html";
+        }
+        contactService.saveMessageDetails(contact);
+        return "redirect:/contact";
 
+    }
 }
 
