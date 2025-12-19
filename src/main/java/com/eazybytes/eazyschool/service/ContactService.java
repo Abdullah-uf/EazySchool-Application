@@ -8,27 +8,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-@ApplicationScope
 @Slf4j
 @Service
 public class ContactService {
-    private int counter = 0;
 
     public ContactService(){
         System.out.println("Contact Service Bean initialized");
     }
 
+
+
+
+
+    /**
+     * Save Contact Details into DB
+     * @param contact
+     * @return boolean
+     */
     public boolean saveMessageDetails(Contact contact){
         boolean isSaved = true;
         log.info(contact.toString());
         return isSaved;
     }
 
-    public int getCounter() {
-        return counter;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
 }
