@@ -1,4 +1,3 @@
-
 package com.eazybytes.eazyschool.constants;
 
 public interface EazySchoolConstants {

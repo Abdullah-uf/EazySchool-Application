@@ -1,3 +1,4 @@
+
 package com.eazybytes.eazyschool.model;
 
 import com.eazybytes.eazyschool.annotation.FieldsValueMatch;
@@ -65,6 +66,4 @@ public class Person extends BaseEntity{
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, targetEntity = Address.class)
     @JoinColumn(name = "address_id", referencedColumnName = "addressId",nullable = true)
     private Address address;
-
-
 }

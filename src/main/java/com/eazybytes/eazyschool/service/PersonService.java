@@ -1,6 +1,7 @@
+
 package com.eazybytes.eazyschool.service;
 
-
+import com.eazybytes.eazyschool.constants.EazySchoolConstants;
 import com.eazybytes.eazyschool.model.Person;
 import com.eazybytes.eazyschool.model.Roles;
 import com.eazybytes.eazyschool.repository.PersonRepository;
@@ -19,7 +20,7 @@ public class PersonService {
 
     public boolean createNewPerson(Person person){
         boolean isSaved = false;
-        Roles role = rolesRepository.getByRoleName(com.eazybytes.eazyschool.constants.EazySchoolConstants.STUDENT_ROLE);
+        Roles role = rolesRepository.getByRoleName(EazySchoolConstants.STUDENT_ROLE);
         person.setRoles(role);
         person = personRepository.save(person);
         if (null != person && person.getPersonId() > 0)
@@ -28,5 +29,5 @@ public class PersonService {
         }
         return isSaved;
     }
-
 }
+

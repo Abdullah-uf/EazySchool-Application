@@ -1,3 +1,4 @@
+
 package com.eazybytes.eazyschool.controller;
 
 import com.eazybytes.eazyschool.model.Person;
@@ -18,13 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PublicController {
 
     @Autowired
-    private PersonService personService;
+    PersonService personService;
 
     @RequestMapping(value ="/register",method = { RequestMethod.GET})
     public String displayRegisterPage(Model model) {
-        model.addAttribute("person",new Person());
+        model.addAttribute("person", new Person());
         return "register.html";
     }
+
     @RequestMapping(value ="/createUser",method = { RequestMethod.POST})
     public String createUser(@Valid @ModelAttribute("person") Person person, Errors errors) {
         if(errors.hasErrors()){
@@ -37,6 +39,5 @@ public class PublicController {
             return "register.html";
         }
     }
-
 
 }
