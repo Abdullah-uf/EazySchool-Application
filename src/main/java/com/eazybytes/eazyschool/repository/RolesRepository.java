@@ -1,3 +1,4 @@
+
 package com.eazybytes.eazyschool.repository;
 
 import com.eazybytes.eazyschool.model.Roles;

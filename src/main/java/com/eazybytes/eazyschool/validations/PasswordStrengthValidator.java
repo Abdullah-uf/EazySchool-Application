@@ -1,3 +1,4 @@
+
 package com.eazybytes.eazyschool.validations;
 
 import com.eazybytes.eazyschool.annotation.PasswordValidator;

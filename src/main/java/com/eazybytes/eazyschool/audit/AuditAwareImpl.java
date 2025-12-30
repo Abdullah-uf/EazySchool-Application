@@ -1,3 +1,4 @@
+
 package com.eazybytes.eazyschool.audit;
 
 import org.springframework.data.domain.AuditorAware;
