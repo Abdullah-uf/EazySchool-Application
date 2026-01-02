@@ -4,7 +4,6 @@ import com.eazybytes.eazyschool.model.EazyClass;
 import com.eazybytes.eazyschool.model.Person;
 import com.eazybytes.eazyschool.repository.EazyClassRepository;
 import com.eazybytes.eazyschool.repository.PersonRepository;
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
+@Controller
+@RequestMapping("admin")
 public class AdminController {
 
     @Autowired
@@ -85,5 +88,15 @@ public class AdminController {
         return modelAndView;
     }
 
-
+    @GetMapping("/deleteStudent")
+    public ModelAndView deleteStudent(Model model, @RequestParam int personId, HttpSession session) {
+        EazyClass eazyClass = (EazyClass) session.getAttribute("eazyClass");
+        Optional<Person> person = personRepository.findById(personId);
+        person.get().setEazyClass(null);
+        eazyClass.getPersons().remove(person.get());
+        EazyClass eazyClassSaved = eazyClassRepository.save(eazyClass);
+        session.setAttribute("eazyClass",eazyClassSaved);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
+        return modelAndView;
+    }
 }
