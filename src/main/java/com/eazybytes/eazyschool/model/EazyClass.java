@@ -1,4 +1,3 @@
-
 package com.eazybytes.eazyschool.model;
 
 import jakarta.persistence.*;
