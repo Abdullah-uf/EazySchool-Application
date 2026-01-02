@@ -60,6 +60,12 @@ public class AdminController {
         modelAndView.addObject("eazyClass",eazyClass.get());
         modelAndView.addObject("person",new Person());
         session.setAttribute("eazyClass",eazyClass.get());
+        if(error != null) {
+            errorMessage = "Invalid Email entered!!";
+            modelAndView.addObject("errorMessage", errorMessage);
+        }
+        return modelAndView;
+    }
 
 
 }
