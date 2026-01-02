@@ -67,5 +67,16 @@ public class AdminController {
         return modelAndView;
     }
 
+    @PostMapping("/addStudent")
+    public ModelAndView addStudent(Model model, @ModelAttribute("person") Person person, HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+        EazyClass eazyClass = (EazyClass) session.getAttribute("eazyClass");
+        Person personEntity = personRepository.readByEmail(person.getEmail());
+        if(personEntity==null || !(personEntity.getPersonId()>0)){
+            modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId()
+                    +"&error=true");
+            return modelAndView;
+        }
+
 
 }
