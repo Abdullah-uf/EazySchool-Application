@@ -77,6 +77,13 @@ public class AdminController {
                     +"&error=true");
             return modelAndView;
         }
+        personEntity.setEazyClass(eazyClass);
+        personRepository.save(personEntity);
+        eazyClass.getPersons().add(personEntity);
+        eazyClassRepository.save(eazyClass);
+        modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
+        return modelAndView;
+    }
 
 
 }
