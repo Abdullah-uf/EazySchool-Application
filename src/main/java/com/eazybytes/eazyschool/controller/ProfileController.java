@@ -5,7 +5,6 @@ import com.eazybytes.eazyschool.model.Address;
 import com.eazybytes.eazyschool.model.Person;
 import com.eazybytes.eazyschool.model.Profile;
 import com.eazybytes.eazyschool.repository.PersonRepository;
-import com.eazybytes.eazyschool.service.PersonService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
