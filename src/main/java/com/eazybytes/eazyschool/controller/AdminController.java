@@ -4,14 +4,12 @@ import com.eazybytes.eazyschool.model.EazyClass;
 import com.eazybytes.eazyschool.model.Person;
 import com.eazybytes.eazyschool.repository.EazyClassRepository;
 import com.eazybytes.eazyschool.repository.PersonRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -52,6 +50,16 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayClasses");
         return modelAndView;
     }
+
+    @GetMapping("/displayStudents")
+    public ModelAndView displayStudents(Model model, @RequestParam int classId, HttpSession session,
+                                        @RequestParam(value = "error", required = false) String error) {
+        String errorMessage = null;
+        ModelAndView modelAndView = new ModelAndView("students.html");
+        Optional<EazyClass> eazyClass = eazyClassRepository.findById(classId);
+        modelAndView.addObject("eazyClass",eazyClass.get());
+        modelAndView.addObject("person",new Person());
+        session.setAttribute("eazyClass",eazyClass.get());
 
 
 }
