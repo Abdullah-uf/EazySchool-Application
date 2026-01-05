@@ -10,12 +10,31 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="contact_msg")
-public class Contact extends BaseEntity {
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "SqlResultSetMapping.count", columns = @ColumnResult(name = "cnt"))
+})
+@NamedQueries({
+        @NamedQuery(name = "Contact.findOpenMsgs",
+                query = "SELECT c FROM Contact c WHERE c.status = :status"),
+        @NamedQuery(name = "Contact.updateMsgStatus",
+                query = "UPDATE Contact c SET c.status = ?1 WHERE c.contactId = ?2")
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "Contact.findOpenMsgsNative",
+                query = "SELECT * FROM contact_msg c WHERE c.status = :status"
+                ,resultClass = Contact.class),
+        @NamedNativeQuery(name = "Contact.findOpenMsgsNative.count",
+                query = "select count(*) as cnt from contact_msg c where c.status = :status",
+                resultSetMapping = "SqlResultSetMapping.count"),
+        @NamedNativeQuery(name = "Contact.updateMsgStatusNative",
+                query = "UPDATE contact_msg c SET c.status = ?1 WHERE c.contact_id = ?2")
+})
+public class Contact extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id")
-    private int ContactId;
+    private int contactId;
 
     @NotBlank(message="Name must not be blank")
     @Size(min=3, message="Name must be at least 3 characters long")
@@ -38,4 +57,5 @@ public class Contact extends BaseEntity {
     private String message;
 
     private String status;
+
 }
