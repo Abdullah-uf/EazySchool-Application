@@ -61,8 +61,8 @@ public class ContactController {
 
     @RequestMapping("/displayMessages/page/{pageNum}")
     public ModelAndView displayMessages(Model model,
-                                        @PathVariable(name = "pageNum") int pageNum, @RequestParam("sortField") String sortField,
-                                        @RequestParam("sortDir") String sortDir) {
+                                        @PathVariable(name = "pageNum") int pageNum,@RequestParam("sortField") String sortField,
+                                        @RequestParam("sortDir") String sortDir){
         Page<Contact> msgPage = contactService.findMsgsWithOpenStatus(pageNum,sortField,sortDir);
         List<Contact> contactMsgs = msgPage.getContent();
         ModelAndView modelAndView = new ModelAndView("messages.html");

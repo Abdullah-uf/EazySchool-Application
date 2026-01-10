@@ -1,4 +1,3 @@
-
 package com.eazybytes.eazyschool.controller;
 
 import com.eazybytes.eazyschool.model.Person;

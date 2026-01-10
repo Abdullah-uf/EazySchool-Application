@@ -1,10 +1,10 @@
 package com.eazybytes.eazyschool.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Component
+@Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
@@ -12,4 +12,5 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/courses").setViewName("courses");
         registry.addViewController("/about").setViewName("about");
     }
+
 }
